@@ -5,6 +5,7 @@ var morgan = require('morgan')
 
 
 app.use(express.json());
+app.use(express.static('build'));
 
 morgan.token('body', (req,res) =>{
 return JSON.stringify(req.body)
@@ -133,8 +134,8 @@ res.send(deleteName)
 })
 
 // app.use(unknownEndpoint)
-
-app.listen(3001, () =>{
-console.log("Server is up and running")
+const PORT = process.env.PORT || 3001
+app.listen(PORT, () =>{
+console.log(`Server is up and running on port ${PORT}`)
 
 })
